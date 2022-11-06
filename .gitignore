@@ -1,0 +1,26 @@
+# We don't want lockfiles in stacks, as people could use a different package manager
+# This part will be removed by `remix.init`
+
+node_modules
+
+/build
+/public/build
+.env
+
+/cypress/screenshots
+/cypress/videos
+/prisma/data.db
+/prisma/data.db-journal
+
+/app/styles/tailwind.css
+
+# yarn3
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+
+yarn-error.log
