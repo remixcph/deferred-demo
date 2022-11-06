@@ -1,22 +1,32 @@
-import { json } from "@remix-run/node";
-import { useCatch, useLoaderData } from "@remix-run/react";
-import { getKoalas } from "~/models/koala.server";
-
-export async function loader() {
-  const koala = await getKoalas();
-
-  return json({ koala });
-}
+import { useCatch, useFetcher } from "@remix-run/react";
+import { useEffect } from "react";
+import type { loaderType } from "../api/koala";
 
 export default function KoalaPage() {
-  const data = useLoaderData<typeof loader>();
+  const fetcher = useFetcher<loaderType>();
+
+  useEffect(() => {
+    if (fetcher.state === "idle" && !fetcher.data) {
+      fetcher.load("/api/koala");
+    }
+  }, [fetcher.state, fetcher.data, fetcher]);
+
+  if (fetcher.data) {
+    const koala = fetcher.data.koala;
+
+    return (
+      <div>
+        <h3 className="text-2xl font-bold">{koala.name}</h3>
+        <p className="py-6">Delay: {koala.delay} ms</p>
+        <hr className="my-4" />
+        <img src={koala.img} alt={`${koala.name} the koala`} />
+      </div>
+    );
+  }
 
   return (
     <div>
-      <h3 className="text-2xl font-bold">{data.koala.name}</h3>
-      <p className="py-6">Delay: {data.koala.delay} ms</p>
-      <hr className="my-4" />
-      <img src={data.koala.img} alt={`${data.koala.name} the koala`} />
+      <h3 className="text-2xl font-bold">Loading...</h3>
     </div>
   );
 }
