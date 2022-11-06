@@ -5,7 +5,16 @@ import { getKoalas } from "~/models/koala.server";
 export async function loader() {
   const koala = await getKoalas();
 
-  return json({ koala });
+  return json(
+    { koala },
+    {
+      headers: {
+        // max-age controls the browser cache
+        // s-maxage controls a CDN cache
+        "Cache-Control": "public, max-age=30, s-maxage=86400",
+      },
+    }
+  );
 }
 
 export default function KoalaPage() {

@@ -64,6 +64,7 @@ export default function NotesPage() {
                     `block border-b p-4 text-xl ${isActive ? "bg-white" : ""}`
                   }
                   to="koala"
+                  prefetch="intent"
                 >
                   🐨 Koala
                 </NavLink>
