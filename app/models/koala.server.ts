@@ -6,7 +6,7 @@ export type Koala = {
 
 export function getKoalas(): Promise<Koala> {
   return new Promise((resolve, reject) => {
-    const delay = Math.floor(Math.random() * 10000);
+    const delay = 4000;
 
     const koala = {
       name: "Tim the koala",
