@@ -2,9 +2,9 @@
 
 This repo features 3 different ways of handling slow routes in remix:
 
-1. Prefecth
-2. useEffect + useFetcher
-3. Deferred
+1. [Prefecth](https://github.com/remixcph/deferred-demo/pull/1/files)
+2. [useEffect + useFetcher](https://github.com/remixcph/deferred-demo/pull/2/files)
+3. [Deferred](https://github.com/remixcph/deferred-demo/pull/3/files)
 
 In the main branch the initial slow request is just left as is.
 The slow route is on http://localhost:300/notes/koala
@@ -27,3 +27,11 @@ The database seed script creates a new user with some data you can use to get st
 - Password: `racheliscool`
 
 This repo is based on the [Remix Indie Stack](https://github.com/remix-run/indie-stack)
+
+## Further reading on deferred
+
+- [React router docs that describes the problem and the solution](https://beta.reactrouter.com/en/main/guides/deferred)
+- [Remix blog on the Remix<>React Router refactoring](https://remix.run/blog/remixing-react-router)
+- [ADR document from Remix describing the process of migrating Remix to use React Router 6.4](https://github.com/remix-run/remix/blob/main/decisions/0007-remix-on-react-router-6-4-0.md)
+- [Remix streaming data guide](https://github.com/remix-run/remix/blob/cbec20ee92cad1bb0e2eebff8bbf3c20454dd2c8/docs/guides/streaming.md)
+- [Remix PR with the experimental features](https://github.com/remix-run/remix/pull/3434)
