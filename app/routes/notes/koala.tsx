@@ -1,11 +1,10 @@
-import { json } from "@remix-run/node";
-import { useCatch, useLoaderData } from "@remix-run/react";
+import { defer } from "@remix-run/node";
+import { Await, useCatch, useLoaderData } from "@remix-run/react";
+import { Suspense } from "react";
 import { getKoalas } from "~/models/koala.server";
 
 export async function loader() {
-  const koala = await getKoalas();
-
-  return json({ koala });
+  return defer({ koala: getKoalas() });
 }
 
 export default function KoalaPage() {
@@ -13,10 +12,23 @@ export default function KoalaPage() {
 
   return (
     <div>
-      <h3 className="text-2xl font-bold">{data.koala.name}</h3>
-      <p className="py-6">Delay: {data.koala.delay} ms</p>
-      <hr className="my-4" />
-      <img src={data.koala.img} alt={`${data.koala.name} the koala`} />
+      <Suspense
+        fallback={<h3 className="text-2xl font-bold">Loading data...</h3>}
+      >
+        <Await
+          resolve={data.koala}
+          errorElement={<p>Error loading package location!</p>}
+        >
+          {(koala) => (
+            <>
+              <h3 className="text-2xl font-bold">{koala.name}</h3>
+              <p className="py-6">Delay: {koala.delay} ms</p>
+              <hr className="my-4" />
+              <img src={koala.img} alt={`${koala.name} the koala`} />
+            </>
+          )}
+        </Await>
+      </Suspense>
     </div>
   );
 }
