@@ -1,0 +1,18 @@
+/* Animation property */
+.loader {
+  animation: grow 4s linear infinite;
+  transform-origin: left;
+}
+
+/* Keyframes */
+@keyframes grow {
+  0% {
+    transform: scaleX(0);
+  }
+  20% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
