@@ -1,10 +1,11 @@
 # Examples of slow request handling in Remix
 
-This repo features 3 different ways of handling slow routes in remix:
+This repo features 4 different ways of handling slow routes in remix:
 
-1. [Prefecth](https://github.com/remixcph/deferred-demo/pull/1/files)
-2. [useEffect + useFetcher](https://github.com/remixcph/deferred-demo/pull/2/files)
-3. [Deferred](https://github.com/remixcph/deferred-demo/pull/3/files)
+1. [Prefecth](https://github.com/remixcph/deferred-demo/compare/main...01-prefetch)
+2. [useTransition](https://github.com/remixcph/deferred-demo/compare/main...02-use-transition)
+3. [useEffect + useFetcher](https://github.com/remixcph/deferred-demo/compare/main...03-use-effect)
+4. [Deferred](https://github.com/remixcph/deferred-demo/compare/main...04-deferred)
 
 In the main branch the initial slow request is just left as is.
 The slow route is on http://localhost:300/notes/koala
